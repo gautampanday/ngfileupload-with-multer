@@ -1,0 +1,273 @@
+<html>
+<head></head>
+  <body ng-app="fileUpload" ng-controller="MyCtrl">
+<section>
+  <div class="page-header">
+    <h1>Multiple file upload of multiple fields</h1>
+  </div>
+  <div class="col-md-12">
+    <form name="vm.form.vendorForm" class="form-horizontal" novalidate>
+         <fieldset>
+        <div class="row">
+        <div class="col-md-6">
+        <div class="form-group col-md-12" show-errors>
+          <label class="control-label" for="type">Contract- Attachment <span class="text-danger required-sign">*</span></label>
+         
+        <div class="col-md-12 form-group" ng-hide="uploader.queue.length">
+          <span class="btn btn-default btn-file">
+              Select Image <input type="file" ngf-select="vm.uploadFiles($files, $invalidFiles)" ngf-multiple="true" ng-model="vm.fileSelected.picFileContract" name="file"    
+             accept="image/*" ngf-max-size="2MB" required
+             ngf-model-invalid="errorFile">
+      <i ng-show="myForm.file.$error.required">*required</i><br>
+      <i ng-show="myForm.file.$error.maxSize">File too large 
+          {{errorFile.size / 1000000|number:1}}MB: max 2M</i>
+
+      <img ng-show="myForm.file.$valid" height="100" width="100" ngf-thumbnail="vm.fileSelected.picFileContract" class="thumb"> 
+     
+          </span>
+          <ul>
+    <li ng-repeat="f in vm.files" style="font:smaller">{{f.name}} {{f.$errorParam}}
+      <span class="progress" ng-show="f.progress >= 0">
+        <div style="width:{{f.progress}}%"  
+            ng-bind="f.progress + '%'"></div>
+      </span>
+    </li>
+    <li ng-repeat="f in errFiles" style="font:smaller">{{f.name}} {{f.$error}} {{f.$errorParam}}
+    </li> 
+  </ul>
+        </div>
+        <div class="text-center form-group" ng-show="uploader.queue.length">
+          <button class="btn btn-default" ng-click="cancelUpload();">Cancel</button>
+        </div>
+        </div>
+        <div class="form-group col-md-12" show-errors>
+          <label class="control-label" for="type">RIF - Attachment <span class="text-danger required-sign">*</span></label>
+         
+        <div class="col-md-12 form-group" ng-hide="uploader.queue.length">
+          <span class="btn btn-default btn-file">
+              Select Image <input type="file" ngf-select ngf-multiple="true" ng-model="vm.fileSelected.picFilerif" name="file"    
+             accept="image/*" ngf-max-size="2MB" required
+             ngf-model-invalid="errorFile">
+      <i ng-show="myForm.file.$error.required">*required</i><br>
+      <i ng-show="myForm.file.$error.maxSize">File too large 
+          {{errorFile.size / 1000000|number:1}}MB: max 2M</i>
+
+      <img ng-show="myForm.file.$valid" height="100" width="100" ngf-thumbnail="vm.fileSelected.picFilerif" class="thumb">
+      
+          </span>
+        </div>
+        <div class="text-center form-group" ng-show="uploader.queue.length">
+          <button class="btn btn-default" ng-click="cancelUpload();">Cancel</button>
+        </div>
+        </div>
+        <div class="form-group col-md-12" show-errors>
+          <label class="control-label" for="type">Vendor ID Proof - Attachment <span class="text-danger required-sign">*</span></label>
+         
+        <div class="col-md-12 form-group" ng-hide="uploader.queue.length">
+          <span class="btn btn-default btn-file">
+              Select Image <input type="file" ngf-select ngf-multiple="true" ng-model="vm.fileSelected.picvendorID" name="file"    
+             accept="image/*" ngf-max-size="2MB" required
+             ngf-model-invalid="errorFile">
+      <i ng-show="myForm.file.$error.required">*required</i><br>
+      <i ng-show="myForm.file.$error.maxSize">File too large 
+          {{errorFile.size / 1000000|number:1}}MB: max 2M</i>
+
+      <img ng-show="myForm.file.$valid" height="100" width="100" ngf-thumbnail="vm.fileSelected.picvendorID" class="thumb"> 
+      
+          </span>
+        </div>
+        <div class="text-center form-group" ng-show="uploader.queue.length">
+          <button class="btn btn-default" ng-click="cancelUpload();">Cancel</button>
+        </div>
+        </div>
+
+
+        <div class="form-group col-md-12" show-errors>
+          <label class="control-label" for="type">Cancelled Cheque Copy - Attachment <span class="text-danger required-sign">*</span></label>
+         
+        <div class="col-md-12 form-group" ng-hide="uploader.queue.length">
+          <span class="btn btn-default btn-file">
+              Select Image <input type="file" ngf-select ngf-multiple="true" ng-model="vm.fileSelected.piccancelledcheque" name="file"    
+             accept="image/*" ngf-max-size="2MB" required
+             ngf-model-invalid="errorFile">
+      <i ng-show="myForm.file.$error.required">*required</i><br>
+      <i ng-show="myForm.file.$error.maxSize">File too large 
+          {{errorFile.size / 1000000|number:1}}MB: max 2M</i>
+
+      <img ng-show="myForm.file.$valid" height="100" width="100" ngf-thumbnail="vm.fileSelected.piccancelledcheque" class="thumb">
+      
+          </span>
+        </div>
+        <div class="text-center form-group" ng-show="uploader.queue.length">
+          <button class="btn btn-default" ng-click="cancelUpload();">Cancel</button>
+        </div>
+        </div>
+
+       <div class="form-group col-md-12" show-errors>
+          <label class="control-label" for="type">Menu Attachment <span class="text-danger required-sign">*</span></label>
+         
+        <div class="col-md-12 form-group" ng-hide="uploader.queue.length">
+          <span class="btn btn-default btn-file">
+              Select Image <input type="file" ngf-select ngf-multiple="true" ng-model="vm.fileSelected.picmenu" name="file"    
+             accept="image/*" ngf-max-size="2MB" required
+             ngf-model-invalid="errorFile">
+      <i ng-show="myForm.file.$error.required">*required</i><br>
+      <i ng-show="myForm.file.$error.maxSize">File too large 
+          {{errorFile.size / 1000000|number:1}}MB: max 2M</i>
+
+      <img ng-show="myForm.file.$valid" height="100" width="100" ngf-thumbnail="vm.fileSelected.picmenu" class="thumb"> 
+      
+          </span>
+        </div>
+        <div class="text-center form-group" ng-show="uploader.queue.length">
+          <button class="btn btn-default" ng-click="cancelUpload();">Cancel</button>
+        </div>
+        </div>
+
+        <div class="form-group col-md-12" show-errors>
+          <label class="control-label" for="type">Cheque Copy-sign-Up/Ad Slot Fee-Attachment <span class="text-danger required-sign">*</span></label>
+         
+        <div class="col-md-12 form-group" ng-hide="uploader.queue.length">
+          <span class="btn btn-default btn-file">
+              Select Image <input type="file" ngf-select ngf-multiple="true" ng-model="vm.fileSelected.adslot" name="file"    
+             accept="image/*" ngf-max-size="2MB" required
+             ngf-model-invalid="errorFile">
+      <i ng-show="myForm.file.$error.required">*required</i><br>
+      <i ng-show="myForm.file.$error.maxSize">File too large 
+          {{errorFile.size / 1000000|number:1}}MB: max 2M</i>
+
+      <img ng-show="myForm.file.$valid" height="100" width="100" ngf-thumbnail="vm.fileSelected.adslot" class="thumb"> 
+      
+          </span>
+        </div>
+        <div class="text-center form-group" ng-show="uploader.queue.length">
+          <button class="btn btn-default" ng-click="cancelUpload();">Cancel</button>
+        </div>
+        </div>
+        <p class="text-danger">{{ errorMsg }}</p>
+        <button type="button" ng-click="vm.uploadPicture()" class="btn btn-default">{{vm.vendor._id ? 'Save' : 'Save'}}</button>
+        
+        
+        </div>
+        <div ng-show="vm.error" class="text-danger">
+          <strong ng-bind="vm.error"></strong>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+</section>
+<script type="text/javascript">
+/*Angular part Demo */
+  var app = angular.module('fileUpload', ['ngFileUpload']);
+
+app.controller('MyCtrl', ['$scope', 'Upload', '$timeout', function ($scope, Upload, $timeout) {
+    var images;
+    vm.uploadFiles = function(files, errFiles) {
+      images = files;
+      vm.files = files;
+    };
+    vm.uploadPicture = function(isfinalSubmit) {
+      
+      var photos = [];
+      photos.push({ picFileContract: vm.fileSelected.picFileContract, picFilerif : vm.fileSelected.picFilerif,
+        picvendorID: vm.fileSelected.picvendorID, piccancelledcheque: vm.fileSelected.piccancelledcheque,
+        picmenu: vm.fileSelected.picmenu, adslot: vm.fileSelected.adslot });
+      var data = {
+        images: photos
+      };
+      Upload.upload({
+        url: 'api/vendors/fourthsteppicture/'+vm.vendor._id,
+        arrayKey: '',
+        data: data,
+      }).then(function (response) {
+      }, function (response) {
+      }, function (evt) {
+        vm.progress = parseInt(100.0 * evt.loaded / evt.total, 10);
+      });
+    };
+}]);
+/*Angular part Demo End*/
+
+
+/*Node part demo */
+
+/* npm install --save multer */
+
+var path = require('path'),
+  mongoose = require('mongoose'),
+  Vendor = mongoose.model('Vendor'),
+  multer = require('multer'),
+  config = require(path.resolve('./config/config')),
+  errorHandler = require(path.resolve('./modules/core/server/controllers/errors.server.controller')),
+  _ = require('lodash');
+var upload = multer({ dest: 'uploads/' });
+
+
+exports.fourthstepImages = function(req, res) {
+  var vendor = req.vendor;
+  vendor = _.extend(vendor, req.body);
+  var message = null;
+ // var upload = multer(config.uploads.profileUpload).array('images');
+  //if(!images[picFileContract] || !images[picFilerif] || !images[picvendorID] || !images[piccancelledcheque])
+  var upload = multer(config.uploads.profileUpload).fields([{ name: 'images[picFileContract]', maxCount: 12 }, { name: 'images[picFilerif]', maxCount: 12 },
+  { name: 'images[picvendorID]', maxCount: 12 },{ name: 'images[piccancelledcheque]', maxCount: 12 },
+   { name: 'images[picmenu]', maxCount: 12 }, { name: 'images[adslot]', maxCount: 12 } ]);
+  
+  if (vendor) {
+    upload(req, res, function (uploadError) {
+      if(uploadError) {
+        return res.status(400).send({
+          message: 'Error occurred while uploading profile picture'
+        });
+      } else {
+        
+        if(!req.files['images[picFileContract]'][0] || !req.files['images[picFilerif]'][0] || 
+        !req.files['images[picvendorID]'][0] || !req.files['images[piccancelledcheque]'][0] || 
+        !req.files['images[picmenu]'][0] || !req.files['images[adslot]'][0]) {
+          return res.status(400).send({
+            message: 'Please fill all fields'
+          });
+        }
+        for(var index in req.files['images[picFileContract]']) {
+          vendor.picFileContract.push(config.uploads.profileUpload.dest + req.files['images[picFileContract]'][index].filename);
+        }
+        for(var indexrif in req.files['images[picFilerif]']) {
+          vendor.picFilerif.push(config.uploads.profileUpload.dest + req.files['images[picFilerif]'][indexrif].filename);
+        }
+        for(var indexvendorId in req.files['images[picvendorID]']) {
+          vendor.picvendorID.push(config.uploads.profileUpload.dest + req.files['images[picvendorID]'][indexvendorId].filename);
+        }
+        for(var indexcancelledcheque in req.files['images[piccancelledcheque]']) {
+          vendor.piccancelledcheque.push(config.uploads.profileUpload.dest + req.files['images[piccancelledcheque]'][indexcancelledcheque].filename);
+        }
+        for(var indexmenu in req.files['images[picmenu]']) {
+          vendor.picmenu.push(config.uploads.profileUpload.dest + req.files['images[picmenu]'][indexmenu].filename);
+        }
+        for(var indexadslot in req.files['images[adslot]']) {
+          vendor.adslot.push(config.uploads.profileUpload.dest + req.files['images[adslot]'][indexadslot].filename);
+        }
+        vendor.save(function (saveError) {
+          if (saveError) {
+            return res.status(400).send({
+              message: errorHandler.getErrorMessage(saveError)
+            });
+          } else {
+            res.json(vendor);
+          }
+        });
+      }
+    });
+    
+  } else {
+    res.status(400).send({
+      message: 'User is not signed in'
+    });
+  }
+};
+
+/*Node part demo end*/
+
+</script>
+</body>
+
+</html>
